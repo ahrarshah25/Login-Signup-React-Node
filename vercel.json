@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "name": "login-signup-app",
+  "builds": [
+    {
+      "src": "Front-End/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Front-End/build"
+      }
+    },
+    {
+      "src": "backend/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/backend/$1" },
+    { "src": "/(.*)", "dest": "/Front-End/build/$1" }
+  ]
+}
